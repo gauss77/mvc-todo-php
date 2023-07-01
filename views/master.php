@@ -14,7 +14,7 @@
         // Show Navbar If The User Is Authenticated
     ?>
         <header class="bg-dark">
-            <nav class="container-fluid container-md p-3 p-5-lg navbar navbar-expand-lg navbar-dark">
+            <nav class="container-fluid container-md px-3 px-5-lg navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.php?action=afficher">TODO</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">

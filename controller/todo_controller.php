@@ -126,7 +126,6 @@
             exit();
         }
 
-        echo "Somehow Not Entering";
         header("location: index.php?action=afficher");
         exit();
     }
