@@ -1,9 +1,10 @@
 <?php
-    require "model/todo_model.php";
+
+    // require_once "model/todo_model.php";
 
     // VIEWS
     function sign_in() {
-        session_start();
+        // session_start();
 
         if (!(isset($_SESSION["logged"]) or isset($_SESSION["username"]))) {
             require "views/login.php";
@@ -24,7 +25,7 @@
     }
 
     function user_todos() {
-        session_start();
+        // session_start();
         if (isset($_SESSION["username"])) {
             $username = $_SESSION["username"];
             return get_todos($username);
@@ -35,7 +36,7 @@
     }
 
     function new_todo() {
-        session_start();
+        // session_start();
         if (isset($_POST["todo"])) {
             $todo = htmlspecialchars($_POST["todo"]);
             $todo = trim($_POST["todo"]);
@@ -62,7 +63,7 @@
                 if (!empty($user)) {
                     // Use Hashing Later
                     if ($user["username"] == $username and $user["password"] == $password) {
-                        session_start();
+                        // session_start();
                         $_SESSION["logged"] = "true";
                         $_SESSION["username"] = $username;
 
@@ -92,7 +93,7 @@
     }
 
     function update() {
-        session_start();
+        // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             if (isset($_POST["todo"]) and isset($_POST["todo_id"])) {
                 $id = htmlspecialchars($_POST["todo_id"]);
@@ -113,7 +114,7 @@
     }
 
     function supprimer() {
-        session_start();
+        // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             if (isset($_GET["action"]) and isset($_GET["id"])) {
                 $id = htmlspecialchars(trim($_GET["id"]));
@@ -131,7 +132,7 @@
     }
 
     function deconnection() {
-        session_start();
+        // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             session_unset();
             session_destroy();

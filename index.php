@@ -1,7 +1,8 @@
 <?php
+    session_start();
+    require "model/todo_model.php";
     require "controller/todo_controller.php";
 
-    unset($_COOKIE);
 
     if (isset($_GET["action"])) {
         $route = $_GET["action"];
