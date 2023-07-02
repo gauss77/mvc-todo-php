@@ -55,9 +55,9 @@
     function authentification() {
         if (isset($_POST["username"]) and isset($_POST["password"])) {
             $username = filter_var($_POST["username"], FILTER_SANITIZE_SPECIAL_CHARS);
-            $username = htmlspecialchars($username);
+            $username = htmlspecialchars($_POST["username"]);
             $username = trim($username);
-            $password = htmlspecialchars($username);
+            $password = htmlspecialchars($_POST["password"]);
 
             if($username != "" and $password != "") {
                 $user = get_user($username);
