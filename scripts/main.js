@@ -3,8 +3,6 @@ let username = document.getElementById("username");
 let password = document.getElementById("password");
 let danger_alert = document.getElementById("danger-alert");
 
-console.log(form);
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -15,10 +13,10 @@ form.addEventListener("submit", function (e) {
 
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(xhr.responseText);
+      // console.log(xhr.responseText);
 
       let responseData = JSON.parse(xhr.responseText);
-      console.log(responseData);
+      // console.log(responseData);
 
       if (responseData.stat == "error") {
         danger_alert.innerText = responseData.message;

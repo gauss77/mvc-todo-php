@@ -38,9 +38,10 @@
     function new_todo() {
         // session_start();
         if (isset($_POST["todo"])) {
-            $todo = htmlspecialchars($_POST["todo"]);
-            $todo = trim($_POST["todo"]);
-            $todo = ucfirst($_POST["todo"]);
+            $todo = filter_var($_POST["todo"], FILTER_SANITIZE_SPECIAL_CHARS);
+            $todo = htmlspecialchars($todo);
+            $todo = trim($todo);
+            $todo = ucfirst($todo);
             if (!empty($todo)) {
                 $username = $_SESSION["username"];
                 ajouter_todo($todo, $username);
@@ -53,9 +54,10 @@
 
     function authentification() {
         if (isset($_POST["username"]) and isset($_POST["password"])) {
-            $username = htmlspecialchars($_POST["username"]);
-            $username = trim($_POST["username"]);
-            $password = htmlspecialchars($_POST["password"]);
+            $username = filter_var($_POST["username"], FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = htmlspecialchars($username);
+            $username = trim($username);
+            $password = htmlspecialchars($username);
 
             if($username != "" and $password != "") {
                 $user = get_user($username);
@@ -96,10 +98,12 @@
         // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             if (isset($_POST["todo"]) and isset($_POST["todo_id"])) {
-                $id = htmlspecialchars($_POST["todo_id"]);
-                $id = trim($_POST["todo_id"]);
-                $todo = htmlspecialchars($_POST["todo"]);
-                $todo = trim($_POST["todo"]);
+                $id = filter_var($_POST["todo_id"], FILTER_SANITIZE_SPECIAL_CHARS);
+                $id = htmlspecialchars($id );
+                $id = trim($id );
+                $todo = filter_var($_POST["todo"], FILTER_SANITIZE_SPECIAL_CHARS);
+                $todo = htmlspecialchars($todo);
+                $todo = trim($todo);
 
                 if ($id && $todo) {
                     update_todo($id, $todo);
@@ -117,7 +121,8 @@
         // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             if (isset($_GET["action"]) and isset($_GET["id"])) {
-                $id = htmlspecialchars(trim($_GET["id"]));
+                $id = filter_var($_GET["id"], FILTER_SANITIZE_SPECIAL_CHARS);
+                $id = htmlspecialchars(trim($id));
                 if ($_GET["action"] == "supprimer") {
                     drop_todo($id);
                 }
