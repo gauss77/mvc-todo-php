@@ -5,7 +5,7 @@
 ?>
 
     <!-- TODO: This Should Be More Dynamic -->
-    <div id="alert" class="alert alert-success d-none">Todo Has Been Updated Successfully!!!</div>
+    <div id="alert" class="alert alert-success d-none"></div>
 
     <form action="index.php?action=ajouter" method="post" class="pb-4">
         <label for="todo" class="form-label">New Todo</label>
@@ -28,7 +28,7 @@
             <tr>
                 <td><?= $todo["todo"] ?></td>
                 <td>
-                    <a href="index.php?action=supprimer&id=<?= $todo["id"] ?>" class="btn btn-danger">Delete</a>
+                    <button data-action = "delete" data-todo-id="<?= $todo['id'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
                     <button data-action = "update" data-todo-id="<?= $todo['id'] ?>" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update</button>
                 </td>
             </tr>
@@ -43,9 +43,11 @@
 
     <!-- Modal -->
     <?php include "views/includes/update_modal.html" ?>
+    <?php include "views/includes/delete_modal.html" ?>
 
-    <script src="scripts/update_todo.js" defer></script>
-    <script src="scripts/plugins.js"></script>
+    <script src="scripts/update_todo.js" type="module" defer></script>
+    <script src="scripts/delete_todo.js" type="module" defer></script>
+    <!-- <script src="scripts/plugins.js"></script> -->
 
 <?php
     $content = ob_get_contents();

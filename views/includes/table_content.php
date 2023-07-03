@@ -8,7 +8,7 @@
     <tr>
         <td><?= $todo["todo"] ?></td>
         <td>
-            <a href="index.php?action=supprimer&id=<?= $todo["id"] ?>" class="btn btn-danger">Delete</a>
+            <button data-action = "delete" data-todo-id="<?= $todo['id'] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
             <button data-action = "update" data-todo-id="<?= $todo['id'] ?>" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update</button>
         </td>
     </tr>

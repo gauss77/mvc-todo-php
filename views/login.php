@@ -5,10 +5,11 @@
 ?>
     <form action="index.php?action=authentification" method="post" class="pb-4">
 
-        <div class="alert alert-info d-none" id="danger-alert">
+        <div class="alert alert-info">
             You can use the following infos for login tesing: <br>
             <strong>Login:</strong> 'alaoui.rachid' and <strong>Password:</strong> '123456'
         </div>
+
         <div class="alert alert-danger d-none" id="danger-alert"></div>
 
         <div>

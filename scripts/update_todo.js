@@ -1,6 +1,5 @@
 // Updating Variables
-let update_btn = document.querySelectorAll("button[data-action='update']"),
-  modal_textArea = document.querySelector("textarea"),
+let modal_textArea = document.querySelector("textarea"),
   input_id = document.getElementById("todo_form_id"),
   form_update = document.getElementById("form_update"),
   alert_box = document.getElementById("alert"),
@@ -12,7 +11,7 @@ let update_btn = document.querySelectorAll("button[data-action='update']"),
 // Get The Data Of Each Todo When Clicking On Update
 
 addEventListener("click", function (e) {
-  if (e.target.hasAttribute("data-action")) {
+  if (e.target.hasAttribute("data-action") && e.target.getAttribute("data-action") == "update") {
     let todo_id = e.target.getAttribute("data-todo-id");
     let todo_content = e.target.parentElement.parentElement.firstElementChild.innerText;
 
@@ -36,9 +35,10 @@ form_update.addEventListener("submit", function (e) {
 
   xhr.onreadystatechange = function () {
     if (this.status == 200 && this.readyState == 4) {
-      update_response = this.responseText;
+      let update_response = this.responseText;
       if (update_response == "GOOD") {
         // Show Positive Feedback When Inserting Valid Todo
+        alert_box.innerText = "Todo Has Been Updated Successfully!!!";
         alert_box.classList.remove("d-none");
 
         // Update The Table Content Only Using XMLHttpRequest
@@ -75,3 +75,5 @@ function include_table() {
 
   return table_Response;
 }
+
+export { include_table, table_body, alert_box };

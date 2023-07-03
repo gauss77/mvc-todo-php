@@ -4,8 +4,8 @@
     require "controller/todo_controller.php";
 
 
-    if (isset($_GET["action"])) {
-        $route = $_GET["action"];
+    if (isset($_REQUEST["action"])) {
+        $route = $_REQUEST["action"];
 
         switch ($route) {
             case "afficher":

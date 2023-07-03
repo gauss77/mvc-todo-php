@@ -72,33 +72,31 @@
                         echo '{"stat": "success", "message": "You Are Logged"}';
                         
                         // Used to print out feedback alerts in the sign in page
-                    } else echo '{"stat": "error", "message": "Wrong Email Or Passowrd!!!"}';
-                } else echo '{"stat": "error", "message": "Username Does not Exists!!!"}';
-            } else echo '{"stat": "error", "message": "Please Fill Out All The Fields!!!"}';
+                    } else {
+                        echo '{"stat": "error", "message": "Wrong Email Or Passowrd!!!"}';
+                        exit();
+                    }
+                } else {
+                    echo '{"stat": "error", "message": "Username Does not Exists!!!"}';
+                    exit();
+                }
+            } else {
+                echo '{"stat": "error", "message": "Please Fill Out All The Fields!!!"}';
+                exit();
+            }
             
         } else {
-            echo "Forbidden!!!";
             // Missing Up With URL
-            // header("location: index.php?action=403");
-            // exit();
+            header("location: index.php?action=401");
+            exit();
         }
-
-        // Used The Action Attribute To Redirect Instead
-        // if ($success) {
-        //     header("location: index.php?action=afficher");
-        //     exit();
-        // }
-
-        // Success
-        // header("location: index.php?action=afficher");
-        // exit();
     }
 
     function update() {
         // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
             if (isset($_POST["todo"]) and isset($_POST["todo_id"])) {
-                $id = filter_var($_POST["todo_id"], FILTER_SANITIZE_SPECIAL_CHARS);
+                $id = filter_var($_POST["todo_id"], FILTER_SANITIZE_NUMBER_INT);
                 $id = htmlspecialchars($id );
                 $id = trim($id );
                 $todo = filter_var($_POST["todo"], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -114,26 +112,26 @@
         } else {
             echo "Forbidden";
         }
-
     }
 
     function supprimer() {
         // session_start();
         if (isset($_SESSION["logged"]) and isset($_SESSION["username"])) {
-            if (isset($_GET["action"]) and isset($_GET["id"])) {
-                $id = filter_var($_GET["id"], FILTER_SANITIZE_SPECIAL_CHARS);
+            if (isset($_POST["action"]) and isset($_POST["id"])) {
+                $id = filter_var($_POST["id"], FILTER_SANITIZE_NUMBER_INT);
                 $id = htmlspecialchars(trim($id));
-                if ($_GET["action"] == "supprimer") {
+                if ($_POST["action"] == "supprimer") {
                     drop_todo($id);
+                    echo "success";
                 }
             }
         } else {
-            header("location: index.php?action=404");
+            header("location: index.php?action=403");
             exit();
         }
 
-        header("location: index.php?action=afficher");
-        exit();
+        // header("location: index.php?action=afficher");
+        // exit();
     }
 
     function deconnection() {
