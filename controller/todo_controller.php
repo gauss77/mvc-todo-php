@@ -56,7 +56,7 @@
     function authentification() {
         if (isset($_POST["username"]) and isset($_POST["password"])) {
             $username = filter_var($_POST["username"], FILTER_SANITIZE_SPECIAL_CHARS);
-            $username = htmlspecialchars($_POST["username"]);
+            $username = htmlspecialchars($username);
             $username = trim($username);
             $password = htmlspecialchars($_POST["password"]);
             
@@ -69,7 +69,6 @@
                         // session_start();
                         $_SESSION["logged"] = "true";
                         $_SESSION["username"] = $username;
-                        increment_visits();
                         
                         echo '{"stat": "success", "message": "You Are Logged"}';
                         
