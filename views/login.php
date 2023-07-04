@@ -6,7 +6,7 @@
     <form action="index.php?action=authentification" method="post" class="pb-4">
 
         <div class="alert alert-info">
-            You can use the following infos for login tesing: <br>
+            You can use the following infos for login testing: <br>
             <strong>Login:</strong> 'alaoui.rachid' and <strong>Password:</strong> '123456'
         </div>
 

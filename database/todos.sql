@@ -58,18 +58,16 @@ INSERT INTO `todo` (`id`, `todo`, `user_username`) VALUES
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(35) NOT NULL,
-  `password` varchar(25) DEFAULT NULL,
-  `first_name` varchar(35) NOT NULL,
-  `last_name` varchar(35) NOT NULL
+  `password` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `first_name`, `last_name`) VALUES
-(1, 'othmane', '246810', 'Othmane', 'NISSOUKIN'),
-(3, 'alaoui.rachid', '123456', 'Alaoui', 'RACHID');
+INSERT INTO `users` (`id_user`, `username`, `password`) VALUES
+(1, 'othmane', '246810', 'othmane@gmail.com'),
+(3, 'alaoui.rachid', '123456', 'alaoui.rachid@gmail.com');
 
 --
 -- Indexes for dumped tables

@@ -49,14 +49,6 @@
         $statment->execute([":id" => $todo_id]);
     }
 
-    function get_user($username) {
-        $db_connection = connection();
-
-        $statment = $db_connection->prepare("SELECT * FROM users WHERE username LIKE :username LIMIT 1");
-        $statment->execute([":username" => $username]);
-        return $statment->fetch(PDO::FETCH_ASSOC);
-    }
-
     function drop_todo($id) {
         $db_connection = connection();
 

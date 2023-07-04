@@ -15,11 +15,12 @@
     }
 
     function show_todos() {
+        // This $user_todos Is Used In The View In Order To Loop On Todos To Fill The Table
         $user_todos = user_todos();
 
-        $username = get_user($_SESSION["username"]);
-
-        $full_name = strtoupper($username["last_name"]) . " " . ucfirst($username["first_name"]);
+        $username = retrieve_users_by_username($_SESSION["username"]);
+        $username = $username["username"];
+        $username = strtoupper($username);
 
         require "views/todos.php";
     }
@@ -58,9 +59,9 @@
             $username = htmlspecialchars($_POST["username"]);
             $username = trim($username);
             $password = htmlspecialchars($_POST["password"]);
-
+            
             if($username != "" and $password != "") {
-                $user = get_user($username);
+                $user = retrieve_users_by_username($username);
 
                 if (!empty($user)) {
                     // Use Hashing Later
@@ -68,7 +69,8 @@
                         // session_start();
                         $_SESSION["logged"] = "true";
                         $_SESSION["username"] = $username;
-
+                        increment_visits();
+                        
                         echo '{"stat": "success", "message": "You Are Logged"}';
                         
                         // Used to print out feedback alerts in the sign in page

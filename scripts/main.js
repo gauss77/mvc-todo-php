@@ -13,10 +13,7 @@ form.addEventListener("submit", function (e) {
 
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      // console.log(xhr.responseText);
-
       let responseData = JSON.parse(xhr.responseText);
-      // console.log(responseData);
 
       if (responseData.stat == "error") {
         danger_alert.innerText = responseData.message;

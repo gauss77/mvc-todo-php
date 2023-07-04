@@ -1,7 +1,9 @@
 <?php
     session_start();
     require "model/todo_model.php";
+    require_once "model/users_model.php";
     require "controller/todo_controller.php";
+    require "controller/user_controller.php";
 
 
     if (isset($_REQUEST["action"])) {
@@ -34,6 +36,14 @@
 
             case "supprimer":
                 supprimer();
+                break;
+
+            case "register":
+                User::register();
+                break;
+
+            case "sign_up":
+                User::register_layout();
                 break;
 
             case "401":

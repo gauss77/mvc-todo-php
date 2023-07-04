@@ -1,5 +1,5 @@
 <?php
-    $title = $full_name;
+    $title = $username;
 
     ob_start();
 ?>
