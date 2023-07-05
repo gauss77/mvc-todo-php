@@ -49,6 +49,7 @@
             }
 
             // Everything Is Valid
+            $password = password_hash($password, PASSWORD_DEFAULT);
             register_user($username, $password, $email);
             $_SESSION["success"] = "Account Has Been Created!!!";
             echo '{"status": "success", "message": "You Have Been Registered Successfully!!!"}';

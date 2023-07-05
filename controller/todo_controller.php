@@ -64,8 +64,7 @@
                 $user = retrieve_users_by_username($username);
 
                 if (!empty($user)) {
-                    // Use Hashing Later
-                    if ($user["username"] == $username and $user["password"] == $password) {
+                    if ($user["username"] == $username and password_verify($password, $user["password"])) {
                         // session_start();
                         $_SESSION["logged"] = "true";
                         $_SESSION["username"] = $username;
